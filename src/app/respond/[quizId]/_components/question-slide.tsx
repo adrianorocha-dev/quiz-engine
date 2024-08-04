@@ -1,11 +1,12 @@
 import Image from "next/image";
 import type { Question } from "~/server/validators";
 import QuestionInput from "./question-input";
-import Button from "~/components/button";
-import { ChevronLeftIcon } from "lucide-react";
-import { ReactNode } from "react";
 
-export default function QuestionSlide(props: { question: Question }) {
+export default function QuestionSlide(props: {
+  question: Question;
+  value?: string | string[];
+  onChange: (answer: string | string[]) => void;
+}) {
   return (
     <div className="flex-1">
       {props.question.imageUrl && (
@@ -25,7 +26,11 @@ export default function QuestionSlide(props: { question: Question }) {
           <p className="text-lg">{props.question.description}</p>
         </div>
 
-        <QuestionInput question={props.question} />
+        <QuestionInput
+          question={props.question}
+          value={props.value}
+          onChange={props.onChange}
+        />
       </div>
     </div>
   );

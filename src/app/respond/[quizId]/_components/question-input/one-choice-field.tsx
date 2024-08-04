@@ -3,6 +3,8 @@ import type { Question } from "~/server/validators";
 
 export default function OneChoiceField(props: {
   question: Extract<Question, { type: "one-choice" }>;
+  value: string;
+  onChange: (answer: string) => void;
 }) {
   return (
     <ul className="flex flex-col gap-4">
@@ -15,6 +17,8 @@ export default function OneChoiceField(props: {
               type="radio"
               name={props.question.title}
               value={option}
+              checked={option === props.value}
+              onChange={(e) => props.onChange(e.target.value)}
             />
 
             {option}

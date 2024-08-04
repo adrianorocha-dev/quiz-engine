@@ -3,6 +3,8 @@ import type { Question } from "~/server/validators";
 
 export default function MultiChoiceField(props: {
   question: Extract<Question, { type: "multiple-choice" }>;
+  value: string[];
+  onChange: (answer: string[]) => void;
 }) {
   return (
     <ul className="flex flex-col gap-4">
@@ -16,6 +18,14 @@ export default function MultiChoiceField(props: {
                 type="checkbox"
                 name={props.question.title}
                 value={option}
+                checked={props.value.includes(option)}
+                onChange={(e) =>
+                  props.onChange(
+                    props.value.includes(e.target.value)
+                      ? props.value.filter((value) => value !== e.target.value)
+                      : [...props.value, e.target.value],
+                  )
+                }
               />
               <CheckIcon className="invisible col-start-1 row-start-1 h-4 w-4 text-white transition-colors peer-checked:visible" />
             </div>

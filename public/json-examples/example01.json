@@ -17,7 +17,8 @@
       "description": "This is a description",
       "imageUrl": "https://via.placeholder.com/800x400",
       "type": "multiple-choice",
-      "options": ["Option 1", "Option 2", "Option 3"]
+      "options": ["Option 1", "Option 2", "Option 3"],
+      "conditions": [{ "questionId": "q1", "answer": "Option 1" }]
     },
     {
       "id": "q3",
@@ -25,7 +26,11 @@
       "description": "This is a description",
       "imageUrl": "https://via.placeholder.com/800x400",
       "type": "input",
-      "placeholder": "Enter your answer here"
+      "placeholder": "Enter your answer here",
+      "conditions": [
+        { "questionId": "q1", "answer": "Option 1" },
+        { "questionId": "q2", "answer": ["Option 2"] }
+      ]
     }
   ]
 }

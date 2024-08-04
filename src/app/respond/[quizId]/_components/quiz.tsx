@@ -1,12 +1,28 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import type { Quiz } from "~/server/validators";
 import QuestionSlide from "./question-slide";
 import NavigationBar from "./progress-bar";
+import { useQuestionConditions } from "../_hooks/useQuestionConditions";
 
 export default function Quiz(props: { quiz: Quiz }) {
   const [currentQuestion, setCurrentQuestion] = useState(-1);
+
+  const [answers, setAnswers] = useState(new Map<string, string | string[]>());
+
+  useQuestionConditions({
+    currentQuestion: props.quiz.questions[currentQuestion],
+    answers,
+    setCurrentQuestion,
+  });
+
+  const handleAnswer = (answer: string | string[]) => {
+    setAnswers(
+      (answers) =>
+        new Map(answers.set(props.quiz.questions[currentQuestion]!.id, answer)),
+    );
+  };
 
   return (
     <div className="flex h-full flex-1 flex-col">
@@ -18,7 +34,11 @@ export default function Quiz(props: { quiz: Quiz }) {
       ) : currentQuestion >= props.quiz.questions.length ? (
         <QuizFinished />
       ) : (
-        <QuestionSlide question={props.quiz.questions[currentQuestion]!} />
+        <QuestionSlide
+          question={props.quiz.questions[currentQuestion]!}
+          value={answers.get(props.quiz.questions[currentQuestion]!.id)}
+          onChange={handleAnswer}
+        />
       )}
 
       <NavigationBar

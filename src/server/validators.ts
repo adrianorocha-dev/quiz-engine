@@ -14,6 +14,14 @@ export const questionSchema = z
     title: z.string(),
     description: z.string().optional(),
     imageUrl: z.string().url().optional(),
+    conditions: z
+      .array(
+        z.object({
+          questionId: z.string(),
+          answer: z.union([z.string(), z.array(z.string())]),
+        }),
+      )
+      .default([]),
   })
   .and(
     z.discriminatedUnion("type", [
