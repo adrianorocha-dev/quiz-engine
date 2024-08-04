@@ -1,7 +1,4 @@
-import fs from "fs/promises";
-import path from "path";
-import { quizSchema } from "~/server/validators";
-import { tryResult } from "~/utils/try";
+import { getQuiz } from "~/server/data/quiz";
 
 export async function GET(
   request: Request,
@@ -11,20 +8,11 @@ export async function GET(
     return Response.json({ message: "No quiz id provided" }, { status: 400 });
   }
 
-  const formJsonData = await fs.readFile(
-    path.resolve("public", "json-examples", `${params.id}.json`),
-    "utf-8",
-  );
+  const quiz = await getQuiz(params.id);
 
-  const [data, error] = tryResult(() => JSON.parse(formJsonData) as unknown);
-  if (error) {
-    return Response.json({ message: error.message }, { status: 500 });
+  if (!quiz) {
+    return Response.json({ message: "Quiz not found" }, { status: 404 });
   }
 
-  const result = quizSchema.safeParse(data);
-  if (!result.success) {
-    return Response.json(result.error.format(), { status: 400 });
-  }
-
-  return Response.json(data, { status: 200 });
+  return Response.json(quiz, { status: 200 });
 }
