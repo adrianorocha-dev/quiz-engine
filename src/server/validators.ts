@@ -12,6 +12,8 @@ export const questionSchema = z
   .object({
     id: z.string(),
     title: z.string(),
+    description: z.string().optional(),
+    imageUrl: z.string().url().optional(),
   })
   .and(
     z.discriminatedUnion("type", [

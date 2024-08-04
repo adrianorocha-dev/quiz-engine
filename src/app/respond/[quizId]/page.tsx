@@ -16,7 +16,7 @@ export default async function RespondPage({ params }: Props) {
   }
 
   return (
-    <main className="flex min-h-svh w-full flex-col">
+    <main className="flex min-h-svh w-screen flex-col">
       <Quiz quiz={quizData} />
     </main>
   );

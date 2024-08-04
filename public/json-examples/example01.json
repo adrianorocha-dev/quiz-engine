@@ -6,18 +6,24 @@
     {
       "id": "q1",
       "title": "Question 1",
+      "description": "This is a description",
+      "imageUrl": "https://via.placeholder.com/800x400",
       "type": "one-choice",
       "options": ["Option 1", "Option 2", "Option 3"]
     },
     {
       "id": "q2",
       "title": "Question 2",
+      "description": "This is a description",
+      "imageUrl": "https://via.placeholder.com/800x400",
       "type": "multiple-choice",
       "options": ["Option 1", "Option 2", "Option 3"]
     },
     {
       "id": "q3",
       "title": "Question 3",
+      "description": "This is a description",
+      "imageUrl": "https://via.placeholder.com/800x400",
       "type": "input",
       "placeholder": "Enter your answer here"
     }
