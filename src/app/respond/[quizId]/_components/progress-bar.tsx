@@ -9,10 +9,10 @@ export default function NavigationBar(props: {
   onNext: () => void;
 }) {
   return (
-    <div className="flex flex-col gap-4 p-4">
+    <div className="flex flex-col gap-4 p-4 md:pb-8">
       <div className="flex w-full items-center justify-between gap-4">
         {props.current >= 0 && props.current < props.total && (
-          <Button onClick={props.onPrevious}>
+          <Button variant="secondary" onClick={props.onPrevious}>
             <ChevronLeftIcon />
             <span className="sr-only">Previous Question</span>
           </Button>

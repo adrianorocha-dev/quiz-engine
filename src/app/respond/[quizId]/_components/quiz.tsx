@@ -25,7 +25,7 @@ export default function Quiz(props: { quiz: Quiz }) {
   };
 
   return (
-    <div className="flex h-full flex-1 flex-col">
+    <div className="flex h-full w-full max-w-md flex-1 flex-col self-center">
       {currentQuestion < 0 ? (
         <QuizIntro
           quizTitle={props.quiz.title}
