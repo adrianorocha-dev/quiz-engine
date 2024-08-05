@@ -4,6 +4,7 @@ import Button from "~/components/button";
 export default function NavigationBar(props: {
   current: number;
   total: number;
+  canGoNext: boolean;
   onPrevious: () => void;
   onNext: () => void;
 }) {
@@ -19,7 +20,7 @@ export default function NavigationBar(props: {
 
         {props.current < props.total &&
           (props.current >= 0 ? (
-            <Button onClick={props.onNext}>
+            <Button onClick={props.onNext} disabled={!props.canGoNext}>
               Continue <ChevronRightIcon />
             </Button>
           ) : (

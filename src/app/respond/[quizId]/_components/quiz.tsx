@@ -44,6 +44,9 @@ export default function Quiz(props: { quiz: Quiz }) {
       <NavigationBar
         current={currentQuestion}
         total={props.quiz.questions.length}
+        canGoNext={
+          !!answers.get(props.quiz.questions[currentQuestion]?.id ?? "")?.length
+        }
         onPrevious={() => setCurrentQuestion((current) => current - 1)}
         onNext={() => setCurrentQuestion((current) => current + 1)}
       />
