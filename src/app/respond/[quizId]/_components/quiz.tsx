@@ -5,6 +5,7 @@ import type { Quiz } from "~/server/validators";
 import QuestionSlide from "./question-slide";
 import NavigationBar from "./progress-bar";
 import { useQuestionConditions } from "../_hooks/useQuestionConditions";
+import SlideView from "./slide-view";
 
 export default function Quiz(props: { quiz: Quiz }) {
   const [currentQuestion, setCurrentQuestion] = useState(-1);
@@ -26,20 +27,25 @@ export default function Quiz(props: { quiz: Quiz }) {
 
   return (
     <div className="flex h-full w-full max-w-md flex-1 flex-col self-center">
-      {currentQuestion < 0 ? (
-        <QuizIntro
-          quizTitle={props.quiz.title}
-          quizLength={props.quiz.questions.length}
-        />
-      ) : currentQuestion >= props.quiz.questions.length ? (
-        <QuizFinished />
-      ) : (
-        <QuestionSlide
-          question={props.quiz.questions[currentQuestion]!}
-          value={answers.get(props.quiz.questions[currentQuestion]!.id)}
-          onChange={handleAnswer}
-        />
-      )}
+      <SlideView
+        currentSlide={currentQuestion}
+        items={props.quiz.questions}
+        keyExtractor={(question) => question.id}
+        renderItem={(question) => (
+          <QuestionSlide
+            question={question}
+            value={answers.get(question.id)}
+            onChange={handleAnswer}
+          />
+        )}
+        introSlide={
+          <QuizIntro
+            quizTitle={props.quiz.title}
+            quizLength={props.quiz.questions.length}
+          />
+        }
+        outroSlide={<QuizFinished />}
+      />
 
       <NavigationBar
         current={currentQuestion}
