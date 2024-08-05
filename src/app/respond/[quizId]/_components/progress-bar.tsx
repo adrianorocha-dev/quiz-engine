@@ -42,7 +42,7 @@ function ProgressBar(props: { current: number; total: number }) {
     <div className="flex flex-1 flex-col items-center">
       <div className="flex h-2 w-full items-center justify-between rounded-full bg-gray-200">
         <div
-          className="h-full rounded-full bg-blue-500 transition-all duration-300"
+          className="h-full rounded-full bg-blue-500 duration-300 motion-safe:transition-all motion-reduce:transition-none"
           style={{
             width: `${(props.current / props.total) * 100}%`,
           }}
