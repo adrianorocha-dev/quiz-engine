@@ -53,3 +53,7 @@ src
 ├── utils # Contains utility functions
 . # Config files
 ```
+
+## Caveats
+
+If the quiz JSON file contains images from a remote URL, the domain must be whitelisted in the `next.config.js` file, in the `remotePatterns` section.
