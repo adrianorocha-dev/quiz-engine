@@ -11,14 +11,12 @@ export default function SlideView<T extends unknown>(props: {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log("current slide", props.currentSlide);
     if (!scrollRef.current) return;
 
     const scrollToItem = () => {
       const item = scrollRef.current?.querySelector(
         `[data-slide-item="${props.currentSlide}"]`,
       );
-      console.log("item", item);
 
       if (!item || !(item instanceof HTMLElement)) return;
 
@@ -40,7 +38,7 @@ export default function SlideView<T extends unknown>(props: {
   }, [props.currentSlide]);
 
   return (
-    <div ref={scrollRef} className="flex flex-1 overflow-x-hidden">
+    <div ref={scrollRef} className="relative flex flex-1 overflow-x-hidden">
       <div className="flex min-w-full flex-col" data-slide-item="-1">
         {props.introSlide}
       </div>
