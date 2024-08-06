@@ -6,6 +6,7 @@ import QuestionSlide from "./question-slide";
 import NavigationBar from "./progress-bar";
 import { useQuestionConditions } from "../_hooks/useQuestionConditions";
 import SlideView from "./slide-view";
+import Button from "~/components/button";
 
 export default function Quiz(props: { quiz: Quiz }) {
   const [currentQuestion, setCurrentQuestion] = useState(-1);
@@ -23,6 +24,11 @@ export default function Quiz(props: { quiz: Quiz }) {
       (answers) =>
         new Map(answers.set(props.quiz.questions[currentQuestion]!.id, answer)),
     );
+  };
+
+  const handleStartOver = () => {
+    setAnswers(new Map());
+    setCurrentQuestion(-1);
   };
 
   return (
@@ -44,7 +50,7 @@ export default function Quiz(props: { quiz: Quiz }) {
             quizLength={props.quiz.questions.length}
           />
         }
-        outroSlide={<QuizFinished />}
+        outroSlide={<QuizFinished onStartOver={handleStartOver} />}
       />
 
       <NavigationBar
@@ -74,13 +80,15 @@ function QuizIntro(props: { quizTitle: string; quizLength: number }) {
   );
 }
 
-function QuizFinished() {
+function QuizFinished(props: { onStartOver: () => void }) {
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-4 px-4">
       <h1 className="text-3xl font-bold">Quiz Finished</h1>
-      <p className="text-lg">
+      <p className="text-center text-lg">
         You have completed the quiz. Thank you for participating!
       </p>
+
+      <Button onClick={props.onStartOver}>Submit a different response</Button>
     </div>
   );
 }
