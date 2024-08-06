@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { useState } from "react";
 import type { Quiz } from "~/server/validators";
 import QuestionSlide from "./question-slide";
 import NavigationBar from "./progress-bar";

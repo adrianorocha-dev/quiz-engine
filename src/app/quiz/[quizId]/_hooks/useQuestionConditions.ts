@@ -28,7 +28,7 @@ export function useQuestionConditions({
     ) {
       setCurrentQuestion((current) => current + 1);
     }
-  }, [currentQuestion]);
+  }, [answers, currentQuestion, setCurrentQuestion]);
 }
 
 function compareAnswers(a: string | string[], b: string | string[]) {

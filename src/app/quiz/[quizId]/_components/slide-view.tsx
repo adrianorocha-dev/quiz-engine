@@ -1,6 +1,6 @@
-import { Fragment, ReactNode, useEffect, useRef } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 
-export default function SlideView<T extends unknown>(props: {
+export default function SlideView<T>(props: {
   currentSlide: number;
   items: T[];
   keyExtractor: (item: T) => string;

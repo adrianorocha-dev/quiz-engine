@@ -1,4 +1,3 @@
-import { ChevronDownIcon } from "lucide-react";
 import type { Question } from "~/server/validators";
 
 export default function OneChoiceField(props: {
