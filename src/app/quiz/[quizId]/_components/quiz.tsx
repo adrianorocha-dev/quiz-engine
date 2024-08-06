@@ -88,7 +88,7 @@ function QuizFinished(props: { onStartOver: () => void }) {
         You have completed the quiz. Thank you for participating!
       </p>
 
-      <Button onClick={props.onStartOver}>Submit a different response</Button>
+      <Button onClick={props.onStartOver}>Answer the quiz again</Button>
     </div>
   );
 }
