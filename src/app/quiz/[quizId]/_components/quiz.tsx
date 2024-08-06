@@ -65,7 +65,7 @@ function QuizIntro(props: { quizTitle: string; quizLength: number }) {
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-4 px-4">
-      <h1 className="text-3xl font-bold">{props.quizTitle}</h1>
+      <h1 className="text-center text-3xl font-bold">{props.quizTitle}</h1>
       <p className="text-lg">{props.quizLength} questions available</p>
       <p className="text-base">
         This quiz will take about {quizTimeMins} minutes

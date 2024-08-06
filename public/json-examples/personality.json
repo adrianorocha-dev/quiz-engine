@@ -1,0 +1,83 @@
+{
+  "id": "personality-quiz",
+  "title": "Personality Assessment",
+  "description": "A quiz to understand your personality traits",
+  "questions": [
+    {
+      "id": "q1",
+      "title": "What is your favorite time of day?",
+      "type": "one-choice",
+      "options": ["Morning", "Afternoon", "Evening", "Night"],
+      "conditions": []
+    },
+    {
+      "id": "q2",
+      "title": "Do you enjoy social gatherings?",
+      "type": "one-choice",
+      "options": ["Yes", "No"],
+      "conditions": []
+    },
+    {
+      "id": "q3",
+      "title": "What is your preferred type of vacation?",
+      "type": "one-choice",
+      "options": ["Beach", "Mountains", "City", "Countryside"],
+      "conditions": []
+    },
+    {
+      "id": "q4",
+      "title": "How do you typically spend your weekends?",
+      "type": "input",
+      "placeholder": "Describe your typical weekend...",
+      "conditions": [
+        {
+          "questionId": "q2",
+          "answer": "Yes"
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "Do you prefer to work alone or in a team?",
+      "type": "one-choice",
+      "options": ["Alone", "In a team"],
+      "conditions": []
+    },
+    {
+      "id": "q6",
+      "title": "What is your favorite type of music?",
+      "type": "one-choice",
+      "options": ["Pop", "Rock", "Classical", "Jazz", "Hip-hop"],
+      "conditions": [
+        {
+          "questionId": "q3",
+          "answer": "City"
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "title": "How do you feel about trying new foods?",
+      "type": "one-choice",
+      "options": ["Yes", "No"],
+      "conditions": [
+        {
+          "questionId": "q3",
+          "answer": ["Beach", "Countryside"]
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "title": "Describe your ideal weekend getaway.",
+      "type": "input",
+      "placeholder": "Describe your ideal getaway...",
+      "conditions": [
+        {
+          "questionId": "q1",
+          "answer": "Night"
+        }
+      ]
+    }
+  ]
+}

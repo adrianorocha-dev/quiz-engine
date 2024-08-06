@@ -1,0 +1,92 @@
+{
+  "id": "hobbies-quiz",
+  "title": "Discover Your Perfect Hobby",
+  "description": "A quiz to help you find the perfect hobby based on your interests",
+  "questions": [
+    {
+      "id": "q1",
+      "title": "How do you like to spend your free time?",
+      "type": "one-choice",
+      "options": [
+        "Being active outdoors",
+        "Staying indoors and relaxing",
+        "Socializing with friends"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "q2",
+      "title": "Do you prefer solo or group activities?",
+      "type": "one-choice",
+      "options": ["Solo", "Group"],
+      "conditions": []
+    },
+    {
+      "id": "q3",
+      "title": "What kind of creative activities do you enjoy?",
+      "type": "multiple-choice",
+      "options": [
+        "Drawing or painting",
+        "Writing",
+        "Cooking or baking",
+        "Playing music"
+      ],
+      "conditions": [
+        {
+          "questionId": "q2",
+          "answer": "Solo"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "Do you enjoy physical activities?",
+      "type": "one-choice",
+      "options": ["Yes", "No"],
+      "conditions": [
+        {
+          "questionId": "q1",
+          "answer": "Being active outdoors"
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "How do you feel about spending time in nature?",
+      "type": "one-choice",
+      "options": ["Love it", "It's okay", "Prefer indoors"],
+      "conditions": [
+        {
+          "questionId": "q4",
+          "answer": "Yes"
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "Do you like to try new foods?",
+      "type": "one-choice",
+      "options": ["Yes", "No"],
+      "conditions": [
+        {
+          "questionId": "q1",
+          "answer": "Staying indoors and relaxing"
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "title": "Do you prefer structured activities or spontaneous plans?",
+      "type": "one-choice",
+      "options": ["Structured", "Spontaneous"],
+      "conditions": []
+    },
+    {
+      "id": "q8",
+      "title": "Are you interested in learning new skills?",
+      "type": "one-choice",
+      "options": ["Yes", "No"],
+      "conditions": []
+    }
+  ]
+}
